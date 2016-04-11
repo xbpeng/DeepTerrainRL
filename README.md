@@ -51,22 +51,17 @@ This section covers some of the steps to setup and compile the code. The softwar
 
 ### Windows
 
-
-
 ## Runing The System
 
 After the system has been build there are two executable files that server different purposes. The **TerrainRL** program is for visually simulating the a controller and **TerrainRL_Optimize** is for optimizing the parameters of some controller.
 
 Examples:  
 	To simulate a controller/character  
-	./TerrainRL -arg_file= args/test_args.txt  
+	./TerrainRL -arg_file= args/sim_dog_args.txt  
 	To simulate a controller/character with a specific policy  
-	./TerrainRL_Optimizer -arg_file= args/opt_int_poli_hopper_eval.txt -policy_model= output/intermediate/trainer_int_model_0000160000.h5  
+	./TerrainRL_Optimizer -arg_file= args/dog_slopes_mixed_args.txt
 	To Train a controller  
-	./TerrainRL_Optimizer -arg_file= args/opt_args_train.txt  
-	./TerrainRL_Optimizer -arg_file= args/opt_args_train_hopper.txt  
-	To Optimize a controllers parameters  
-	./TerrainRL_Optimizer -arg_file= args/opt_args_jump.txt  
+	./TerrainRL_Optimizer -arg_file= args/opt_args_train_mace.txt  
 
 
 ## Key Bindings
@@ -77,7 +72,7 @@ Most of these are toggles
  - y draw COM path and contact locations
  - q draw "filmstrip" like rendering
  - f draw torques
- - h draw Actor value functions?
+ - h draw Actor value functions
  - shift + '>' step one frame
  - p toggle draw value function
  - ',' and '.' change render speed, decrease and increase.
@@ -85,5 +80,7 @@ Most of these are toggles
  - r restart the scenario
  - l reload the simulation (reparses the arg file)
  - g draw state features
-
-
+ - x spawn projectile
+ - z spawn big projectile
+ 
+ - click on character and drag to apply force
