@@ -66,13 +66,13 @@ Examples:
 
 ## Key Bindings
 
-Most of these are toggles
+Most of these are togglesg
 
  - c fixed camera mode
  - y draw COM path and contact locations
  - q draw "filmstrip" like rendering
  - f draw torques
- - h draw Actor value functions
+ - h draw Actor value functions and feature visualization
  - shift + '>' step one frame
  - p toggle draw value function
  - ',' and '.' change render speed, decrease and increase.
