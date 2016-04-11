@@ -1,0 +1,14 @@
+-scenario= sim_char
+
+-character_file= data/characters/goat.txt
+-motion_file= data/motions/goat_climb_up.txt
+-state_file= data/states/goat_state_climb.txt
+
+-char_type= dog
+-char_ctrl= goat_mace
+-terrain_file= data/terrain/cliffs_rugged.txt
+-cam_track_mode= x
+
+-char_init_pos_x= 1.2
+-landing_target_step_x= 1.1
+-landing_target_offset_x= 1.3

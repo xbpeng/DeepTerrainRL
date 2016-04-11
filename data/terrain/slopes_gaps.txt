@@ -1,0 +1,18 @@
+{
+"Type": "slopes_gaps",
+
+"Params": [
+	{
+		"GapSpacingMin": 5,
+		"GapSpacingMax": 8,
+		"GapWMin": 0.3,
+		"GapWMax": 1.0,
+		"GapHMin": -2,
+		"GapHMax": -2,
+
+		"SlopeDeltaRange": 0.05,
+		"SlopeDeltaMin": -0.5,
+		"SlopeDeltaMax": 0.5
+	}
+]
+}

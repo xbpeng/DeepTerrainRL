@@ -1,0 +1,42 @@
+-scenario= train_mace
+-output_path= output/raptor_mace3_model.h5
+
+-character_file= data/characters/raptor.txt
+-state_file= data/states/raptor_run_state.txt
+
+-num_threads= 4
+
+-char_type= raptor
+-char_ctrl= raptor_mace
+-terrain_file= data/terrain/mixed_raptor.txt
+
+-num_update_steps= 20
+-num_sim_substeps= 5
+-world_scale= 4
+
+-policy_solver= data/policies/raptor/nets/raptor_mace3_solver.prototxt
+-policy_net= data/policies/raptor/nets/raptor_mace3_deploy.prototxt
+
+-trainer_num_anneal_iters= 50000
+-exp_base_anneal_iters= 50000
+-trainer_curriculum_iters= 0
+
+-exp_layer= ip0
+-exp_rate= 0.1
+-exp_temp= 0.025
+-exp_base_rate= 0.001
+-init_exp_rate= 0.9
+-init_exp_temp= 20
+-init_exp_base_rate= 0.9
+
+-trainer_replay_mem_size= 500000
+-trainer_max_iter= 1000000000
+-trainer_freeze_target_iters= 500
+-trainer_int_iter= 2000
+-trainer_int_output= output/intermediate/trainer_int_model.h5
+-tuple_buffer_size= 32
+-trainer_num_init_samples= 50000
+-trainer_num_steps_per_iters= 1
+-trainer_iters_per_output= 200
+-trainer_init_input_offset_scale= true
+-trainer_enable_async_mode= false

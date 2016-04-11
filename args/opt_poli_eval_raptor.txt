@@ -1,0 +1,21 @@
+-scenario= poli_eval
+
+-character_file= data/characters/raptor.txt
+-state_file= data/states/raptor_run_state.txt
+-output_path= output/poli_eval.txt
+
+-char_type= raptor
+-char_ctrl= raptor_mace
+
+-num_update_steps= 20
+-num_sim_substeps= 5
+-world_scale= 4
+
+-policy_net= data/policies/raptor/nets/raptor_mace3_deploy.prototxt
+-policy_model= data/policies/raptor/models/raptor_mace3_mixed_model1.h5
+
+-poli_eval_max_episodes= 250
+
+-terrain_file= data/terrain/mixed_raptor.txt
+
+-num_threads= 4

@@ -1,0 +1,138 @@
+-scenario= poli_eval
+
+-character_file= data/characters/dog.txt
+-motion_file= data/motions/dog_bound.txt
+-state_file= data/states/dog_bound_state.txt
+
+//-character_file= data/characters/goat.txt
+//-motion_file= data/motions/goat_climb_up.txt
+//-state_file= data/states/goat_state_climb.txt
+
+//-character_file= data/characters/raptor.txt
+//-motion_file= data/motions/raptor_run.txt
+//-state_file= data/states/raptor_run_state.txt
+
+-output_path= output/dog_model.h5
+
+-char_type= dog
+-char_ctrl= dog_mace
+-terrain_file= data/terrain/mixed.txt
+-cam_track_mode= x
+
+-num_update_steps= 20
+-num_sim_substeps= 5
+-world_scale= 4
+
+-char_init_pos_x= 1.2
+-landing_target_step_x= 1.1
+-landing_target_offset_x= 1.3
+
+//-policy_solver= data/policies/dog/nets/dog_max_solver.prototxt
+//-policy_net= data/policies/dog/nets/dog_max_deploy.prototxt
+//-policy_model= data/policies/dog/models/dog_q_narrow_gaps_model.h5
+
+//-policy_solver= data/policies/dog/nets/dog_actor_solver.prototxt
+//-policy_net= data/policies/dog/nets/dog_actor_deploy.prototxt
+//-policy_model= data/policies/dog/models/dog_cacla_model.h5
+
+//-critic_solver= data/policies/dog/nets/dog_critic_solver.prototxt
+//-critic_net= data/policies/dog/nets/dog_critic_deploy.prototxt
+//-critic_model= data/policies/dog/models/dog_cacla_model_critic.h5
+
+-policy_solver= data/policies/dog/nets/dog_mace3_solver.prototxt
+-policy_net= data/policies/dog/nets/dog_mace3_deploy.prototxt
+-policy_model= data/policies/dog/models/dog_mace3_mixed_model.h5
+
+//-policy_solver= data/policies/dog/nets/dog_mace3_solver.prototxt
+//-policy_net= data/policies/dog/nets/dog_mace3_deploy.prototxt
+//-policy_model= data/policies/goat/models/goat_mace3_cliffs_model.h5
+
+//-policy_solver= data/policies/raptor/nets/raptor_mace3_solver.prototxt
+//-policy_net= data/policies/raptor/nets/raptor_mace3_deploy.prototxt
+//-policy_model= data/policies/raptor/models/raptor_mace3_model.h5
+ 
+//-policy_solver= data/policies/dog/nets/dog_actor_solver.prototxt
+//-policy_net= data/policies/dog/nets/dog_actor_deploy.prototxt
+//-policy_model= data/policies/dog/models/dog_dpg_model.h5
+//-policy_model= data/policies/dog/models/dog_dpg_actor_init_model.h5
+
+//-critic_solver= data/policies/dog/nets/dog_dpg_critic1_solver.prototxt
+//-critic_net= data/policies/dog/nets/dog_dpg_critic1_deploy.prototxt
+//-critic_model= data/policies/dog/models/dog_dpg_model_critic.h5
+//-critic_model= data/policies/dog/models/dog_dpg_critic_init_model.h5
+
+//-policy_solver= data/policies/dog/nets/dog_mace3_dpg_actor_solver.prototxt
+//-policy_net= data/policies/dog/nets/dog_mace3_dpg_actor_deploy.prototxt
+//-policy_model= data/policies/dog/models/dog_mace3_dpg_actor_init_model.h5
+
+//-critic_solver= data/policies/dog/nets/dog_dpg_critic_solver.prototxt
+//-critic_net= data/policies/dog/nets/dog_dpg_critic_deploy.prototxt
+//-critic_model= data/policies/dog/models/dog_dpg_critic_init_model.h5
+
+
+-terrain_blend= 0
+//-poli_eval_rand_seed= 15
+//-poli_eval_rand_seed= 81
+
+-trainer_num_anneal_iters= 16
+-exp_base_anneal_iters= 32
+-trainer_curriculum_iters= 20
+-trainer_curriculum_stage_iters= 2
+-trainer_curriculum_init_exp_scale= 2
+-trainer_pretrain_iters= 10
+-trainer_dpg_q_diff= 0.1
+-trainer_dpg_reg= 0.001
+
+-exp_layer= ip0
+-exp_rate= 0.2
+-exp_temp= 0.025
+-exp_base_rate= 0.01
+-init_exp_rate= 0.2
+-init_exp_temp= 0.025
+-init_exp_base_rate= 0.7
+
+-trainer_max_iter= 10000000
+-trainer_freeze_target_iters= 2
+//-trainer_int_iter= 100
+//-trainer_int_output= output/intermediate/trainer_int_model.h5
+-tuple_buffer_size= 32
+-trainer_num_init_samples= 32
+-trainer_num_steps_per_iters= 1
+-trainer_iters_per_output= 32
+-trainer_init_input_offset_scale= true
+
+-enable_rand_perturbs= false
+-secs_per_rand_perturb= 3
+-min_perturb= 50
+-max_perturb= 150
+-min_pertrub_duration= 0.1
+-max_perturb_duration= 0.5
+
+
+-build_ctrl_from_pose= false
+
+-target_ctrl_id= 0
+//-target_actions= 3
+//-target_actions= 1 2 3 0
+//-target_actions= 7 6 5 4
+//-target_actions= 4
+-recovery_time= 2
+-warmup_time= 5
+
+//-target_vel_x= 4
+-target_vel_x= 3 2 1 4
+-vel_ctrl_cmd_max_time= 5
+
+// analysis stuff
+-record_nn_activation= false
+-nn_activation_output_file= output/nn_activation.txt
+-nn_activation_layer= relu0
+
+-record_actions= false
+-action_output_file= output/actions.txt
+
+-record_vel= false
+-vel_output_file= output/velocities.txt
+
+-record_action_id_state= false
+-action_id_state_output_file= output/action_id_state.txt

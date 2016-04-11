@@ -1,0 +1,18 @@
+-scenario= poli_eval
+
+-character_file= data/characters/raptor.txt
+-motion_file= data/motions/raptor_run.txt
+-state_file= data/states/raptor_run_state.txt
+
+-char_type= raptor
+-char_ctrl= raptor_mace
+-terrain_file= data/terrain/narrow_gaps.txt
+-cam_track_mode= x
+
+-num_update_steps= 20
+-num_sim_substeps= 5
+-world_scale= 4
+
+-policy_solver= data/policies/raptor/nets/raptor_mace3_solver.prototxt
+-policy_net= data/policies/raptor/nets/raptor_mace3_deploy.prototxt
+-policy_model= data/policies/raptor/models/raptor_mace3_narrow_gaps_model.h5

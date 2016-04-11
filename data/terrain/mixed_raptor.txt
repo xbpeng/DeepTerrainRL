@@ -1,0 +1,28 @@
+{
+"Type": "mixed",
+
+"Params": [
+	{
+		"GapSpacingMin": 4,
+		"GapSpacingMax": 7,
+		"GapWMin": 0.5,
+		"GapWMax": 1.5,
+		"GapHMin": -2,
+		"GapHMax": -2,
+
+		"WallSpacingMin": 6,
+		"WallSpacingMax": 8,
+		"WallWMin": 0.2,
+		"WallWMax": 0.2,
+		"WallHMin": 0.25,
+		"WallHMax": 0.5,
+
+		"StepSpacingMin": 5,
+		"StepSpacingMax": 7,
+		"StepH0Min": 0.1,
+		"StepH0Max": 0.4,
+		"StepH1Min": -0.4,
+		"StepH1Max": -0.1
+	}
+]
+}

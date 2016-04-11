@@ -1,0 +1,18 @@
+{
+"Type": "narrow_gaps",
+
+"Params": [
+	{
+		"NarrowGapSpacingMin": 3,
+		"NarrowGapSpacingMax": 6,
+		"NarrowGapDistMin": 0.15,
+		"NarrowGapDistMax": 0.4,
+		"NarrowGapWMin": 0.1,
+		"NarrowGapWMax": 0.5,
+		"NarrowGapDepthMin": -2,
+		"NarrowGapDepthMax": -2,
+		"NarrowGapCountMin": 1,
+		"NarrowGapCountMax": 4
+	}
+]
+}

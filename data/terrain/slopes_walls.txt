@@ -1,0 +1,18 @@
+{
+"Type": "slopes_walls",
+
+"Params": [
+	{
+		"WallSpacingMin": 7,
+		"WallSpacingMax": 9,
+		"WallWMin": 0.2,
+		"WallWMax": 0.2,
+		"WallHMin": 0.25,
+		"WallHMax": 0.4,
+
+		"SlopeDeltaRange": 0.05,
+		"SlopeDeltaMin": -0.5,
+		"SlopeDeltaMax": 0.5
+	}
+]
+}

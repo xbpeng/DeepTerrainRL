@@ -1,0 +1,11 @@
+{
+"Type": "slopes",
+
+"Params": [
+	{
+		"SlopeDeltaRange": 0.1,
+		"SlopeDeltaMin": -0.6,
+		"SlopeDeltaMax": 0.6
+	}
+]
+}

@@ -1,6 +1,6 @@
 ## Intro
 
-This project is designed to learn good navigation skills for simulated characters
+Source code for the paper: Terrain-Adaptive Locomotion Skills using Deep Reinforcement Learning
 
 
 ## Setup
@@ -29,8 +29,7 @@ This section covers some of the steps to setup and compile the code. The softwar
 	Already installed for Caffe
  3. OpenCV  
 	Already installed with Caffe?
- 4. BulletPhysics (https://github.com/lunkhound/bullet3)  
-	This specific threadsafe version
+ 4. BulletPhysics
  5. CUDA  
 	Package Manager Installation  
 	Install repository meta-data  

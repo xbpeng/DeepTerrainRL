@@ -1,0 +1,18 @@
+{
+"Type": "slopes_steps",
+
+"Params": [
+	{
+		"StepSpacingMin": 5,
+		"StepSpacingMax": 7,
+		"StepH0Min": 0.1,
+		"StepH0Max": 0.3,
+		"StepH1Min": -0.3,
+		"StepH1Max": -0.1,
+
+		"SlopeDeltaRange": 0.05,
+		"SlopeDeltaMin": -0.5,
+		"SlopeDeltaMax": 0.5
+	}
+]
+}

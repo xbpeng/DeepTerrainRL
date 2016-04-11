@@ -1,0 +1,17 @@
+-scenario= poli_eval
+
+-character_file= data/characters/dog.txt
+-state_file= data/states/dog_bound_state.txt
+-output_path= output/poli_eval.txt
+
+-char_type= dog
+-char_ctrl= dog_mace
+
+-policy_net= data/policies/dog/nets/dog_mace3_deploy.prototxt
+-policy_model= data/policies/dog/models/dog_mace3_tight_gaps_model.h5
+
+-poli_eval_max_episodes= 250
+
+-terrain_file= data/terrain/tight_gaps.txt
+
+-num_threads= 1

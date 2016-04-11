@@ -1,0 +1,14 @@
+-scenario= sim_char
+
+-character_file= data/characters/dog.txt
+-motion_file= data/motions/dog_bound.txt
+-state_file= data/states/dog_bound_state.txt
+
+-char_type= dog
+-char_ctrl= dog
+-terrain_file= data/terrain/flat.txt
+-cam_track_mode= x
+
+-num_update_steps= 20
+-num_sim_substeps= 5
+-world_scale= 4

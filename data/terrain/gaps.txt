@@ -1,0 +1,14 @@
+{
+"Type": "gaps",
+
+"Params": [
+	{
+		"GapSpacingMin": 4,
+		"GapSpacingMax": 7,
+		"GapWMin": 0.5,
+		"GapWMax": 2,
+		"GapHMin": -2,
+		"GapHMax": -2
+	}
+]
+}

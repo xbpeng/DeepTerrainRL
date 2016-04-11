@@ -1,0 +1,22 @@
+{
+"Type": "cliffs",
+
+"Params": [
+	{
+		"CliffSpacingMin": 0.8,
+		"CliffSpacingMax": 1.0,
+		"CliffH0Min": 0.2,
+		"CliffH0Max": 0.5,
+		"CliffH1Min": 0,
+		"CliffH1Max": 0,
+		"CliffMiniCountMax": 2,
+
+		"BumpHMin": 0,
+		"BumpHMax": 0,
+
+		"SlopeDeltaRange": 0,
+		"SlopeDeltaMin": 0,
+		"SlopeDeltaMax": 0
+	}
+]
+}

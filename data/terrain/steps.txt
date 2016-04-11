@@ -1,0 +1,14 @@
+{
+"Type": "steps",
+
+"Params": [
+	{
+		"StepSpacingMin": 5,
+		"StepSpacingMax": 7,
+		"StepH0Min": 0.1,
+		"StepH0Max": 0.4,
+		"StepH1Min": -0.4,
+		"StepH1Max": -0.1
+	}
+]
+}
