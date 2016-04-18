@@ -371,11 +371,11 @@ void cNeuralNet::Eval(const Eigen::VectorXd& x, Eigen::VectorXd& out_y) const
 		blob_data[i] = norm_x[i];
 	}
 
-	std::vector<caffe::Blob<tNNData>*> bottom(1);
-	bottom[0] = &blob;
-
 	tNNData loss = 0;
-	const std::vector<caffe::Blob<tNNData>*>& result_arr = mNet->Forward(bottom, &loss);
+	const std::vector<caffe::Blob<tNNData>*>& input_blobs = mNet->input_blobs();
+	input_blobs[0]->CopyFrom(blob);
+	const std::vector<caffe::Blob<tNNData>*>& result_arr = mNet->Forward();
+
 	FetchOutput(result_arr, out_y);
 }
 

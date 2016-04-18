@@ -2,6 +2,7 @@
 #include "util/MathUtil.h"
 #include <caffe/net.hpp>
 #include <caffe/caffe.hpp>
+#include <caffe/layers/memory_data_layer.hpp>
 #include <mutex>
 
 class cNNSolver;

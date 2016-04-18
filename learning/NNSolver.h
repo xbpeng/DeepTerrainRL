@@ -2,6 +2,7 @@
 #include "NeuralNet.h"
 #include <caffe/net.hpp>
 #include <caffe/caffe.hpp>
+#include <caffe/sgd_solvers.hpp>
 
 class cNNSolver
 {
@@ -46,9 +47,8 @@ template <typename tSolverType>
 cNeuralNet::tNNData cCaffeSolver<tSolverType>::ForwardBackward()
 {
 	cNeuralNet::tNNData loss = 0;
-	std::vector<caffe::Blob<cNeuralNet::tNNData>*> bottom_vec;
 	net_->ClearParamDiffs();
-	loss = net_->ForwardBackward(bottom_vec);
+	loss = net_->ForwardBackward();
 	return loss;
 };
 
