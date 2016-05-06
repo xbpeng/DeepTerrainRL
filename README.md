@@ -26,9 +26,7 @@ This section covers some of the steps to setup and compile the code. The softwar
 	https://github.com/initialneil/caffe-vs2013
 
  2. Boost  
-	Already installed for Caffe
  3. OpenCV  
-	Already installed with Caffe?
  4. BulletPhysics
  5. CUDA  
 	Package Manager Installation  
@@ -42,10 +40,7 @@ This section covers some of the steps to setup and compile the code. The softwar
  	
  6. Json_cpp (https://github.com/open-source-parsers/jsoncpp)  
  7. Eigen (http://eigen.tuxfamily.org/index.php?title=Main_Page)  
- 8. CMA-ES (https://github.com/AlexanderFabisch/CMA-ESpp)  
- 9. f2c (fortran to C)  
-	sudo apt-get install libf2c2-dev  
- 10. bits  
+ 8. bits  
 	sudo apt-get install gcc-4.9-multilib g++-4.9-multilib  
 
 
