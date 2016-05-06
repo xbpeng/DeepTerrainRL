@@ -564,6 +564,6 @@ int main(int argc, char** argv)
 	InitTime();
 	glutMainLoop();
 
-	return 0;
+	return EXIT_SUCCESS;
 }
 

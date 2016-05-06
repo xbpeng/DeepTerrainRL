@@ -42,11 +42,8 @@ bool cWorld::tConstraintHandle::IsValid() const
 
 void cWorld::tConstraintHandle::Clear()
 {
-	if (mCons != nullptr)
-	{
-		delete mCons;
-		mCons = nullptr;
-	}
+	delete mCons;
+	mCons = nullptr;
 }
 
 cWorld::cWorld()
