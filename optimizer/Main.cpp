@@ -115,4 +115,6 @@ int main(int argc, char** argv)
 	RunScene();
 
 	CleanUp();
+
+	return EXIT_SUCCESS;
 }

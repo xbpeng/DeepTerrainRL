@@ -107,7 +107,7 @@
       <Optimization>Disabled</Optimization>
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;_CRT_SECURE_NO_WARNINGS;_SCL_SECURE_NO_WARNINGS;CPU_ONLY;GOOGLE_GLOG_DLL_DECL=;ENABLE_TRAINING;_USE_MATH_DEFINES;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <SDLCheck>true</SDLCheck>
-      <AdditionalIncludeDirectories>$(ProjectDir);$(ProjectDir)..\;..\..\library\Bullet\include;..\..\library\;..\..\library\Json_cpp;..\..\library\cma_espp;..\..\library\caffe\include\;C:\Program Files (x86)\boost\boost_1_58_0\;..\..\library\caffe\3rdparty\include\hdf5;..\..\library\caffe\3rdparty\include\;..\..\library\caffe\3rdparty\include\openblas;..\..\library\caffe\3rdparty\include\lmdb;C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v7.5\include\;..\..\library\OpenCV\include;..\..\library\caffe\src\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(ProjectDir);$(ProjectDir)..\;..\..\library\Bullet\include;..\..\library\;..\..\library\Json_cpp;..\..\library\caffe\include\;C:\Program Files (x86)\boost\boost_1_58_0\;..\..\library\caffe\3rdparty\include\hdf5;..\..\library\caffe\3rdparty\include\;..\..\library\caffe\3rdparty\include\openblas;..\..\library\caffe\3rdparty\include\lmdb;C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v7.5\include\;..\..\library\OpenCV\include;..\..\library\caffe\src\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
     </ClCompile>
     <Link>
@@ -149,7 +149,7 @@
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <PreprocessorDefinitions>NDEBUG;_CONSOLE;_CRT_SECURE_NO_WARNINGS;_SCL_SECURE_NO_WARNINGS;CPU_ONLY;GOOGLE_GLOG_DLL_DECL=;ENABLE_TRAINING;_USE_MATH_DEFINES;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <SDLCheck>true</SDLCheck>
-      <AdditionalIncludeDirectories>$(ProjectDir);$(ProjectDir)..\;..\..\library\Bullet\include;..\..\library\;..\..\library\Json_cpp;..\..\library\cma_espp;..\..\library\caffe\include\;C:\Program Files (x86)\boost\boost_1_58_0\;..\..\library\caffe\3rdparty\include\hdf5;..\..\library\caffe\3rdparty\include\;..\..\library\caffe\3rdparty\include\openblas;..\..\library\caffe\3rdparty\include\lmdb;C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v7.5\include\;..\..\library\OpenCV\include;..\..\library\caffe\src\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(ProjectDir);$(ProjectDir)..\;..\..\library\Bullet\include;..\..\library\;..\..\library\Json_cpp;..\..\library\caffe\include\;C:\Program Files (x86)\boost\boost_1_58_0\;..\..\library\caffe\3rdparty\include\hdf5;..\..\library\caffe\3rdparty\include\;..\..\library\caffe\3rdparty\include\openblas;..\..\library\caffe\3rdparty\include\lmdb;C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v7.5\include\;..\..\library\OpenCV\include;..\..\library\caffe\src\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
     </ClCompile>
     <Link>
