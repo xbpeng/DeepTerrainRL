@@ -1,7 +1,7 @@
 ## Intro
 
 Source code for the paper: Terrain-Adaptive Locomotion Skills using Deep Reinforcement Learning
-
+https://www.cs.ubc.ca/~van/papers/2016-TOG-deepRL/index.html
 
 ## Setup
 
