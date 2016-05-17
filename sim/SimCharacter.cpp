@@ -108,8 +108,10 @@ void cSimCharacter::Update(double time_step)
 
 tVector cSimCharacter::GetRootPos() const
 {
-	const std::shared_ptr<cSimObj>& root = mBodyParts[GetRootID()];
-	tVector pos = root->GetPos();
+	int root_id = GetRootID();
+	const std::shared_ptr<cSimObj>& root = mBodyParts[root_id];
+	tVector attach_pt = cKinTree::GetBodyAttachPt(mBodyDefs, root_id);
+	tVector pos = root->LocalToWorldPos(-attach_pt);
 	return pos;
 }
 
@@ -165,7 +167,7 @@ void cSimCharacter::BuildPose(Eigen::VectorXd& out_pose) const
 	int num_dof = cKinTree::GetNumDof(mJointMat);
 	out_pose = Eigen::VectorXd(num_dof);
 
-	tVector root_pos = cSimCharacter::GetRootPos();
+	tVector root_pos = GetRootPos();
 	out_pose.block(0, 0, cKinTree::gPosDims, 1) = root_pos.block(0, 0, cKinTree::gPosDims, 1);
 
 	for (int j = 0; j < num_joints; ++j)
@@ -176,7 +178,7 @@ void cSimCharacter::BuildPose(Eigen::VectorXd& out_pose) const
 		if (j == GetRootID())
 		{
 			// note for now theta all with respect to positive z axis
-			cSimCharacter::GetRootRotation(axis, theta);
+			GetRootRotation(axis, theta);
 			theta = (axis[2] >= 0) ? theta : -theta;
 		}
 		else if (mJoints[j].IsValid())
@@ -822,7 +824,7 @@ void cSimCharacter::BuildConstraints(cWorld::ePlaneCons plane_cons)
 	int num_joints = GetNumJoints();
 	mJoints.clear();
 	mJoints.resize(num_joints);
-	tVector root_pos = cSimCharacter::GetRootPos();
+	tVector root_pos = GetRootPos();
 
 	Eigen::VectorXd default_pose = Eigen::VectorXd::Zero(mPose.size());
 

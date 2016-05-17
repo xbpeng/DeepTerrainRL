@@ -819,17 +819,20 @@ tVector cKinTree::GetJointOffset(const Eigen::MatrixXd& joint_mat, const Eigen::
 	int param_offset = GetParamOffset(joint_mat, joint_id);
 	switch (j_type)
 	{
-	case eJointTypePrismatic:
-		offset.segment(0, 1) = state.segment(param_offset, 0);
+	case eJointTypeRevolute:
+		offset.setZero();
 		break;
 	case eJointTypePlanar:
 		offset.segment(0, 2) = state.segment(param_offset, 2);
+		break;
+	case eJointTypePrismatic:
+		offset.segment(0, 1) = state.segment(param_offset, 0);
 		break;
 	case eJointTypeFixed:
 		offset.segment(0, 2) = (is_root) ? state.segment(param_offset, 2) : Eigen::Vector2d(0, 0);
 		break;
 	default:
-		assert(false); // no offset for joint type
+		assert(false); // unsupported joint
 		break;
 	}
 	
