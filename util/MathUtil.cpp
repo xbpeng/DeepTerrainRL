@@ -131,7 +131,7 @@ void cMathUtil::RotMatToAxisAngle(const tMatrix& mat, tVector& out_axis, double&
 	c = cMathUtil::Clamp(c, -1.0, 1.0);
 
 	out_theta = std::acos(c);
-	if (out_theta == 0 || out_theta == M_PI)
+	if (std::abs(out_theta) < 0.00001)
 	{
 		out_axis = tVector(0, 0, 1, 0);
 	}
