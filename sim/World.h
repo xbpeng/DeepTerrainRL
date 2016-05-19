@@ -45,7 +45,7 @@ public:
 	{
 		EIGEN_MAKE_ALIGNED_OPERATOR_NEW
 
-		tParams();
+			tParams();
 		int mNumSubsteps;
 		double mScale;
 		tVector mGravity;
@@ -55,7 +55,7 @@ public:
 	{
 		EIGEN_MAKE_ALIGNED_OPERATOR_NEW
 
-		tJointParams();
+			tJointParams();
 		eJointType mType;
 		tVector mAnchor0;
 		tVector mAnchor1;
@@ -82,7 +82,7 @@ public:
 	{
 		EIGEN_MAKE_ALIGNED_OPERATOR_NEW
 
-		cSimObj* mObj;
+			cSimObj* mObj;
 		tVector mHitPos;
 	};
 	typedef std::vector<tRayTestResult, Eigen::aligned_allocator<tRayTestResult>> tRayTestResults;
@@ -130,7 +130,7 @@ public:
 	virtual void SetLinearVelocity(const tVector& vel, cSimObj* out_obj) const;
 	virtual tVector GetAngularVelocity(const cSimObj* obj) const;
 	virtual void SetAngularVelocity(const tVector& vel, const cSimObj* obj) const;
-	
+
 	virtual tMatrix GetWorldTransform(const cSimObj* obj) const;
 	virtual tMatrix GetLocalTransform(const cSimObj* obj) const;
 	virtual void GetRotation(const cSimObj* obj, tVector& out_axis, double& out_theta) const;
@@ -138,7 +138,7 @@ public:
 	virtual void SetRotation(const tVector& axis, double theta, cSimObj* out_obj) const;
 	virtual void CalcAABB(const cSimObj* obj, tVector& out_min, tVector& out_max) const;
 
-	virtual void ApplyForce(const tVector& force, const tVector& rel_pos, cSimObj* out_obj) const;
+	virtual void ApplyForce(const tVector& force, const tVector& local_pos, cSimObj* out_obj) const;
 	virtual void ApplyTorque(const tVector& torque, cSimObj* out_obj) const;
 
 	virtual std::unique_ptr<btBoxShape> BuildBoxShape(const tVector& box_size) const;

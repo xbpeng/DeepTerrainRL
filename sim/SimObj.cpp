@@ -114,9 +114,9 @@ void cSimObj::ApplyForce(const tVector& force)
 	ApplyForce(force, tVector::Zero());
 }
 
-void cSimObj::ApplyForce(const tVector& force, const tVector& rel_pos)
+void cSimObj::ApplyForce(const tVector& force, const tVector& local_pos)
 {
-	mWorld->ApplyForce(force, rel_pos, this);
+	mWorld->ApplyForce(force, local_pos, this);
 }
 
 void cSimObj::ApplyTorque(const tVector& torque)

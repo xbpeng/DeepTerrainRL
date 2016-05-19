@@ -13,14 +13,14 @@ tPerturb::tPerturb()
 	Clear();
 }
 
-tPerturb::tPerturb(ePerturb type, cSimObj* obj, const tVector& pos_rel,
-					const tVector& perturb, double duration)
+tPerturb::tPerturb(ePerturb type, cSimObj* obj, const tVector& local_pos,
+	const tVector& perturb, double duration)
 	: tPerturb()
 {
 	assert(type != ePerturbInvalid);
 	mType = type;
 	mObj = obj;
-	mPosRel = pos_rel;
+	mLocalPos = local_pos;
 	mPerturb = perturb;
 	mDuration = duration;
 }
@@ -38,7 +38,7 @@ void tPerturb::Clear()
 {
 	mType = ePerturbInvalid;
 	mObj = nullptr;
-	mPosRel.setZero();
+	mLocalPos.setZero();
 	mPerturb.setZero();
 	mDuration = 0;
 	mTime = 0;
@@ -69,7 +69,7 @@ void tPerturb::Update(double time_step)
 void tPerturb::ApplyForce()
 {
 	assert(mType == ePerturbForce);
-	mObj->ApplyForce(mPerturb, mPosRel);
+	mObj->ApplyForce(mPerturb, mLocalPos);
 }
 
 void tPerturb::ApplyTorque()

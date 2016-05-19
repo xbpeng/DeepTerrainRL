@@ -22,14 +22,14 @@ public:
 
 	ePerturb mType;
 	cSimObj* mObj;
-	tVector mPosRel;
+	tVector mLocalPos;
 	tVector mPerturb;
 	double mDuration;
 	double mTime;
 
 	tPerturb();
-	tPerturb(ePerturb type, cSimObj* obj, const tVector& pos_rel, 
-			const tVector& perturb, double duration);
+	tPerturb(ePerturb type, cSimObj* obj, const tVector& local_pos,
+		const tVector& perturb, double duration);
 
 	virtual ~tPerturb();
 

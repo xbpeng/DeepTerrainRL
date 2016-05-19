@@ -53,14 +53,14 @@ void cDrawPerturb::Draw(const tPerturb& perturb)
 
 void cDrawPerturb::DrawForce(const tPerturb& perturb)
 {
-	tVector pos = perturb.mObj->LocalToWorldPos(perturb.mPosRel);
+	tVector pos = perturb.mObj->LocalToWorldPos(perturb.mLocalPos);
 	const tVector& force = perturb.mPerturb;
 	DrawForce2D(pos, force);
 }
 
 void cDrawPerturb::DrawTorque(const tPerturb& perturb)
 {
-	tVector pos = perturb.mObj->LocalToWorldPos(perturb.mPosRel);
+	tVector pos = perturb.mObj->LocalToWorldPos(perturb.mLocalPos);
 	const tVector& torque = perturb.mPerturb;
 	DrawTorque2D(pos, torque);
 }

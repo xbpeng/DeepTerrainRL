@@ -45,7 +45,7 @@ public:
 	virtual tMatrix3 GetLocalToWorldRotMat() const;
 
 	virtual void ApplyForce(const tVector& force);
-	virtual void ApplyForce(const tVector& force, const tVector& rel_pos);
+	virtual void ApplyForce(const tVector& force, const tVector& local_pos);
 	virtual void ApplyTorque(const tVector& torque);
 	virtual void ClearForces();
 

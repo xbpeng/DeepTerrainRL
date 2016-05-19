@@ -212,7 +212,7 @@ void cScenarioSimChar::ApplyRandForce(double min_force, double max_force,
 	assert(obj != nullptr);
 	tPerturb perturb = tPerturb::BuildForce();
 	perturb.mObj = obj;
-	perturb.mPosRel.setZero();
+	perturb.mLocalPos.setZero();
 	perturb.mPerturb[0] = cMathUtil::RandSign() * cMathUtil::RandDouble(0, 1);
 	perturb.mPerturb[1] = cMathUtil::RandSign() * cMathUtil::RandDouble(0, 1);
 	perturb.mPerturb[2] = cMathUtil::RandSign() * cMathUtil::RandDouble(0, 1);

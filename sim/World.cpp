@@ -68,10 +68,10 @@ void cWorld::Init(const tParams& params)
 	btGImpactCollisionAlgorithm::registerAlgorithm(mCollisionDispatcher.get());
 
 	mSolver = std::unique_ptr<btSequentialImpulseConstraintSolver>(new btSequentialImpulseConstraintSolver());
-	mSimWorld = std::unique_ptr<btDiscreteDynamicsWorld>(new btDiscreteDynamicsWorld(mCollisionDispatcher.get(), 
-														mBroadPhase.get(), mSolver.get(), mCollisionConfig.get()));
+	mSimWorld = std::unique_ptr<btDiscreteDynamicsWorld>(new btDiscreteDynamicsWorld(mCollisionDispatcher.get(),
+		mBroadPhase.get(), mSolver.get(), mCollisionConfig.get()));
 	SetGravity(params.mGravity);
-	
+
 	mContactManager.Init();
 	mPerturbManager.Clear();
 }
@@ -81,7 +81,7 @@ void cWorld::Reset()
 	mContactManager.Reset();
 	mPerturbManager.Clear();
 
-	mSimWorld ->clearForces();
+	mSimWorld->clearForces();
 	mSolver->reset();
 	mBroadPhase->resetPool(mCollisionDispatcher.get());
 
@@ -121,7 +121,7 @@ void cWorld::RemoveObject(cSimObj& obj)
 	/*
 	if (obj.GetRigidBody() && obj.GetRigidBody()->getMotionState())
 	{
-		delete obj.GetRigidBody().get()->getMotionState();
+	delete obj.GetRigidBody().get()->getMotionState();
 	}*/
 	// mSimWorld->removeCollisionObject(obj.GetRigidBody().get());
 	mSimWorld->removeRigidBody(obj.GetRigidBody().get());
@@ -165,12 +165,12 @@ void cWorld::ConstrainPlane(cSimObj* obj, ePlaneCons plane_cons)
 void cWorld::Constrain(cSimObj* obj, const tVector& linear_factor, const tVector& angular_factor)
 {
 	auto& body = obj->GetRigidBody();
-	body->setLinearFactor(btVector3(static_cast<btScalar>(linear_factor[0]), 
-									static_cast<btScalar>(linear_factor[1]), 
-									static_cast<btScalar>(linear_factor[2])));
+	body->setLinearFactor(btVector3(static_cast<btScalar>(linear_factor[0]),
+		static_cast<btScalar>(linear_factor[1]),
+		static_cast<btScalar>(linear_factor[2])));
 	body->setAngularFactor(btVector3(static_cast<btScalar>(angular_factor[0]),
-									static_cast<btScalar>(angular_factor[1]),
-									static_cast<btScalar>(angular_factor[2])));
+		static_cast<btScalar>(angular_factor[1]),
+		static_cast<btScalar>(angular_factor[2])));
 }
 
 void cWorld::RemoveConstraint(tConstraintHandle& handle)
@@ -202,9 +202,9 @@ void cWorld::BuildConsFactor(ePlaneCons plane_cons, tVector& out_linear_factor, 
 void cWorld::SetGravity(const tVector& gravity)
 {
 	double scale = GetScale();
-	mSimWorld->setGravity(btVector3(static_cast<btScalar>(gravity[0] * scale), 
-									static_cast<btScalar>(gravity[1] * scale), 
-									static_cast<btScalar>(gravity[2] * scale)));
+	mSimWorld->setGravity(btVector3(static_cast<btScalar>(gravity[0] * scale),
+		static_cast<btScalar>(gravity[1] * scale),
+		static_cast<btScalar>(gravity[2] * scale)));
 }
 
 cContactManager::tContactHandle cWorld::RegisterContact(int contact_flags, int filter_flags)
@@ -231,15 +231,15 @@ void cWorld::RayTest(const tVector& beg, const tVector& end, tRayTestResults& re
 {
 	btScalar scale = static_cast<btScalar>(GetScale());
 	btVector3 bt_beg = scale * btVector3(static_cast<btScalar>(beg[0]),
-								static_cast<btScalar>(beg[1]), 
-								static_cast<btScalar>(beg[2]));
+		static_cast<btScalar>(beg[1]),
+		static_cast<btScalar>(beg[2]));
 	btVector3 bt_end = scale * btVector3(static_cast<btScalar>(end[0]),
-								static_cast<btScalar>(end[1]),
-								static_cast<btScalar>(end[2]));
+		static_cast<btScalar>(end[1]),
+		static_cast<btScalar>(end[2]));
 	btCollisionWorld::ClosestRayResultCallback ray_callback(bt_beg, bt_end);
-	
+
 	mSimWorld->rayTest(bt_beg, bt_end, ray_callback);
-	
+
 	results.clear();
 	if (ray_callback.hasHit())
 	{
@@ -301,9 +301,9 @@ void cWorld::SetPos(const tVector& pos, cSimObj* out_obj) const
 	btTransform trans = body->getWorldTransform();
 
 	btScalar scale = static_cast<btScalar>(GetScale());
-	trans.setOrigin(scale * btVector3(static_cast<btScalar>(pos[0]), 
-								static_cast<btScalar>(pos[1]), 
-								static_cast<btScalar>(pos[2])));
+	trans.setOrigin(scale * btVector3(static_cast<btScalar>(pos[0]),
+		static_cast<btScalar>(pos[1]),
+		static_cast<btScalar>(pos[2])));
 	body->setWorldTransform(trans);
 	body->activate();
 }
@@ -326,8 +326,8 @@ tVector cWorld::GetLinearVelocity(const cSimObj* obj, const tVector& local_pos) 
 	rel_pos.segment(0, 3) = rot_mat * local_pos.segment(0, 3);
 
 	btVector3 bt_vel = body->getVelocityInLocalPoint(scale * btVector3(static_cast<btScalar>(rel_pos[0]),
-															static_cast<btScalar>(rel_pos[1]),
-															static_cast<btScalar>(rel_pos[2])));
+		static_cast<btScalar>(rel_pos[1]),
+		static_cast<btScalar>(rel_pos[2])));
 	tVector vel = tVector(bt_vel[0], bt_vel[1], bt_vel[2], 0);
 	vel /= GetScale();
 	return vel;
@@ -338,8 +338,8 @@ void cWorld::SetLinearVelocity(const tVector& vel, cSimObj* out_obj) const
 	auto& body = out_obj->GetRigidBody();
 	btScalar scale = static_cast<btScalar>(GetScale());
 	body->setLinearVelocity(scale * btVector3(static_cast<btScalar>(vel[0]),
-										static_cast<btScalar>(vel[1]),
-										static_cast<btScalar>(vel[2])));
+		static_cast<btScalar>(vel[1]),
+		static_cast<btScalar>(vel[2])));
 	body->activate();
 }
 
@@ -354,7 +354,7 @@ void cWorld::SetAngularVelocity(const tVector& vel, const cSimObj* obj) const
 {
 	auto& body = obj->GetRigidBody();
 	body->setAngularVelocity(btVector3(static_cast<btScalar>(vel[0]), static_cast<btScalar>(vel[1]),
-							static_cast<btScalar>(vel[2])));
+		static_cast<btScalar>(vel[2])));
 	body->activate();
 }
 
@@ -420,7 +420,7 @@ void cWorld::SetRotation(const tVector& axis, double theta, cSimObj* out_obj) co
 	double norm = axis.norm();
 
 	btVector3 bt_axis = btVector3(static_cast<btScalar>(axis[0]), static_cast<btScalar>(axis[1]),
-									static_cast<btScalar>(axis[2]));
+		static_cast<btScalar>(axis[2]));
 	bt_axis.normalize();
 
 	btQuaternion q;
@@ -442,17 +442,22 @@ void cWorld::CalcAABB(const cSimObj* obj, tVector& out_min, tVector& out_max) co
 	out_max = tVector(bt_max[0], bt_max[1], bt_max[2], 0) / scale;
 }
 
-void cWorld::ApplyForce(const tVector& force, const tVector& rel_pos, cSimObj* out_obj) const
+void cWorld::ApplyForce(const tVector& force, const tVector& local_pos, cSimObj* out_obj) const
 {
 	auto& body = out_obj->GetRigidBody();
-	btVector3 bt_force = btVector3(static_cast<btScalar>(force[0]), 
-									static_cast<btScalar>(force[1]), 
-									static_cast<btScalar>(force[2]));
-	btVector3 bt_pos = btVector3(static_cast<btScalar>(rel_pos[0]),
-									static_cast<btScalar>(rel_pos[1]), 
-									static_cast<btScalar>(rel_pos[2]));
+	btVector3 bt_force = btVector3(static_cast<btScalar>(force[0]),
+		static_cast<btScalar>(force[1]),
+		static_cast<btScalar>(force[2]));
 
 	btScalar scale = static_cast<btScalar>(GetScale());
+	tMatrix3 rot_mat = out_obj->GetLocalToWorldRotMat();
+	tVector rel_pos = tVector::Zero();
+	rel_pos.segment(0, 3) = rot_mat * local_pos.segment(0, 3);
+
+	btVector3 bt_pos = btVector3(static_cast<btScalar>(rel_pos[0]),
+		static_cast<btScalar>(rel_pos[1]),
+		static_cast<btScalar>(rel_pos[2]));
+
 	bt_force *= scale;
 	bt_pos *= scale;
 	body->applyForce(bt_force, bt_pos);
@@ -463,16 +468,16 @@ void cWorld::ApplyTorque(const tVector& torque, cSimObj* out_obj) const
 	auto& body = out_obj->GetRigidBody();
 	btScalar scale = static_cast<btScalar>(GetScale());
 	body->applyTorque(scale * scale * btVector3(static_cast<btScalar>(torque[0]),
-										static_cast<btScalar>(torque[1]),
-										static_cast<btScalar>(torque[2])));
+		static_cast<btScalar>(torque[1]),
+		static_cast<btScalar>(torque[2])));
 }
 
 std::unique_ptr<btBoxShape> cWorld::BuildBoxShape(const tVector& box_size) const
 {
 	btScalar scale = static_cast<btScalar>(GetScale());
 	std::unique_ptr<btBoxShape> shape = std::unique_ptr<btBoxShape>(new btBoxShape(scale * btVector3(static_cast<btScalar>(box_size[0] * 0.5),
-																			static_cast<btScalar>(box_size[1] * 0.5),
-																			static_cast<btScalar>(box_size[2] * 0.5))));
+		static_cast<btScalar>(box_size[1] * 0.5),
+		static_cast<btScalar>(box_size[2] * 0.5))));
 	return shape;
 }
 
@@ -480,22 +485,22 @@ std::unique_ptr<btCapsuleShape> cWorld::BuildCapsuleShape(double radius, double 
 {
 	btScalar scale = static_cast<btScalar>(GetScale());
 	std::unique_ptr<btCapsuleShape> shape = std::unique_ptr<btCapsuleShape>(new btCapsuleShape(static_cast<btScalar>(scale * radius),
-																			static_cast<btScalar>(scale * height)));
+		static_cast<btScalar>(scale * height)));
 	return shape;
 }
 
 std::unique_ptr<btStaticPlaneShape> cWorld::BuildPlaneShape(const tVector& normal, const tVector& origin) const
 {
 	btVector3 bt_normal = btVector3(static_cast<btScalar>(normal[0]),
-									static_cast<btScalar>(normal[1]),
-									static_cast<btScalar>(normal[2]));
+		static_cast<btScalar>(normal[1]),
+		static_cast<btScalar>(normal[2]));
 	btVector3 bt_origin = btVector3(static_cast<btScalar>(origin[0]),
-									static_cast<btScalar>(origin[1]),
-									static_cast<btScalar>(origin[2]));
+		static_cast<btScalar>(origin[1]),
+		static_cast<btScalar>(origin[2]));
 	bt_normal.normalize();
 	double scale = GetScale();
 	btScalar w = static_cast<btScalar>(scale * bt_normal.dot(bt_origin));
-	
+
 	std::unique_ptr<btStaticPlaneShape> shape = std::unique_ptr<btStaticPlaneShape>(new btStaticPlaneShape(bt_normal, w));
 	return shape;
 }
@@ -596,26 +601,26 @@ cWorld::tConstraintHandle cWorld::AddHingeConstraint(cSimObj* obj0, cSimObj* obj
 {
 	btScalar scale = static_cast<btScalar>(GetScale());
 	btVector3 anchor0 = scale * btVector3(static_cast<btScalar>(params.mAnchor0[0]),
-								static_cast<btScalar>(params.mAnchor0[1]),
-								static_cast<btScalar>(params.mAnchor0[2]));
+		static_cast<btScalar>(params.mAnchor0[1]),
+		static_cast<btScalar>(params.mAnchor0[2]));
 	btVector3 anchor1 = scale * btVector3(static_cast<btScalar>(params.mAnchor1[0]),
-								static_cast<btScalar>(params.mAnchor1[1]),
-								static_cast<btScalar>(params.mAnchor1[2]));
+		static_cast<btScalar>(params.mAnchor1[1]),
+		static_cast<btScalar>(params.mAnchor1[2]));
 	btVector3 axis = btVector3(static_cast<btScalar>(params.mAxis[0]),
-								static_cast<btScalar>(params.mAxis[1]),
-								static_cast<btScalar>(params.mAxis[2]));
+		static_cast<btScalar>(params.mAxis[1]),
+		static_cast<btScalar>(params.mAxis[2]));
 
 	btHingeConstraint* cons = nullptr;
 	if (obj1 != nullptr)
 	{
 		cons = new btHingeConstraint(*(obj0->GetRigidBody()), *(obj1->GetRigidBody()),
-									anchor0, anchor1, axis, axis);
+			anchor0, anchor1, axis, axis);
 	}
 	else
 	{
 		cons = new btHingeConstraint(*(obj0->GetRigidBody()), anchor0, axis);
 	}
-	
+
 	// bullet limits are flipped
 	cons->setLimit(-static_cast<btScalar>(params.mLimHigh), -static_cast<btScalar>(params.mLimLow));
 	mSimWorld->addConstraint(cons, !params.mEnableAdjacentCollision);
@@ -631,26 +636,26 @@ cWorld::tConstraintHandle cWorld::AddPrismaticConstraint(cSimObj* obj0, cSimObj*
 	anchor0_t.setIdentity();
 	btScalar scale = static_cast<btScalar>(GetScale());
 	btVector3 anchor0 = scale * btVector3(static_cast<btScalar>(params.mAnchor0[0]),
-								static_cast<btScalar>(params.mAnchor0[1]),
-								static_cast<btScalar>(params.mAnchor0[2]));
+		static_cast<btScalar>(params.mAnchor0[1]),
+		static_cast<btScalar>(params.mAnchor0[2]));
 	anchor0_t.setOrigin(anchor0);
 	anchor0_t.getBasis().setEulerZYX(0.f, 0.f, static_cast<btScalar>(M_PI_2));
 	btTransform anchor1_t;
 	anchor1_t.setIdentity();
 	btVector3 anchor1 = scale * btVector3(static_cast<btScalar>(params.mAnchor1[0]),
-								static_cast<btScalar>(params.mAnchor1[1]),
-								static_cast<btScalar>(params.mAnchor1[2]));
+		static_cast<btScalar>(params.mAnchor1[1]),
+		static_cast<btScalar>(params.mAnchor1[2]));
 	anchor1_t.setOrigin(anchor1);
 	anchor1_t.getBasis().setEulerZYX(0.f, 0.f, static_cast<btScalar>(M_PI_2));
 	btVector3 axis = btVector3(static_cast<btScalar>(params.mAxis[0]),
-								static_cast<btScalar>(params.mAxis[1]),
-								static_cast<btScalar>(params.mAxis[2]));
+		static_cast<btScalar>(params.mAxis[1]),
+		static_cast<btScalar>(params.mAxis[2]));
 
 	btSliderConstraint* cons = nullptr;
 	if (obj1 != nullptr)
 	{
 		cons = new btSliderConstraint(*(obj0->GetRigidBody()), *(obj1->GetRigidBody()),
-									anchor0_t, anchor1_t, true);
+			anchor0_t, anchor1_t, true);
 	}
 
 	cons->setLowerLinLimit(static_cast<btScalar>(scale * params.mLimLow));

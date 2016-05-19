@@ -129,8 +129,11 @@ void cSimCharacter::GetRootRotation(tVector& out_axis, double& out_theta) const
 
 tVector cSimCharacter::GetRootVel() const
 {
-	const std::shared_ptr<cSimObj>& root = mBodyParts[GetRootID()];
-	return root->GetLinearVelocity();
+	int root_id = GetRootID();
+	const std::shared_ptr<cSimObj>& root = mBodyParts[root_id];
+	tVector attach_pt = cKinTree::GetBodyAttachPt(mBodyDefs, root_id);
+	tVector vel = root->GetLinearVelocity(-attach_pt);
+	return vel;
 }
 
 tVector cSimCharacter::GetRootAngVel() const
