@@ -8,11 +8,6 @@
 #include "NNSolver.h"
 #include "AsyncSolver.h"
 
-#ifdef _LINUX_
-#include <caffe_backup/data_layers.hpp>
-#include <caffe/sgd_solvers.hpp>
-#endif
-
 const std::string gInputOffsetKey = "InputOffset";
 const std::string gInputScaleKey = "InputScale";
 const std::string gOutputOffsetKey = "OutputOffset";
