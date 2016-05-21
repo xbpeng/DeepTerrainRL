@@ -187,15 +187,6 @@ void cSimCharacter::BuildPose(Eigen::VectorXd& out_pose) const
 		else if (mJoints[j].IsValid())
 		{
 			CalcJointRotation(j, axis, theta);
-			
-			// hack assuming all joints are along the z axis
-			const tVector ref_axis = mJoints[j].CalcAxisWorld();
-			double proj = ref_axis.dot(axis);
-			if (proj < 0)
-			{
-				theta = -theta;
-				axis = -axis;
-			}
 		}
 		out_pose(idx) = theta;
 	}
