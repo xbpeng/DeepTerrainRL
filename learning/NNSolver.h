@@ -47,8 +47,8 @@ template <typename tSolverType>
 cNeuralNet::tNNData cCaffeSolver<tSolverType>::ForwardBackward()
 {
 	cNeuralNet::tNNData loss = 0;
-	net_->ClearParamDiffs();
-	loss = net_->ForwardBackward();
+	this->GetNet()->ClearParamDiffs();
+	loss = this->GetNet()->ForwardBackward();
 	return loss;
 };
 

@@ -8,31 +8,31 @@ public:
 	cSolverAsync(const caffe::SolverParameter& param)
 		: cCaffeSolver<tSolverType>(param) {};
 	virtual ~cSolverAsync() {};
-	
+
 	virtual void ApplySteps(int steps);
 };
 
 template <typename tSolverType>
 void cSolverAsync<tSolverType>::ApplySteps(int steps) {
 	std::vector<caffe::Blob<cNeuralNet::tNNData>*> bottom_vec;
-	const int start_iter = iter_;
-	const int stop_iter = iter_ + steps;
+	const int start_iter = cSolverAsync<tSolverType>::iter_;
+	const int stop_iter = cSolverAsync<tSolverType>::iter_ + steps;
 
-	while (iter_ < stop_iter) {
-		ApplyUpdate();
-		++iter_;
+	while (cSolverAsync<tSolverType>::iter_ < stop_iter) {
+		cSolverAsync<tSolverType>::ApplyUpdate();
+		++cSolverAsync<tSolverType>::iter_;
 
-		caffe::SolverAction::Enum request = GetRequestedAction();
+		caffe::SolverAction::Enum request = cSolverAsync<tSolverType>::GetRequestedAction();
 
 		// Save a snapshot if needed.
-		if ((param_.snapshot()
-			&& iter_ % param_.snapshot() == 0
+		if ((cSolverAsync<tSolverType>::param_.snapshot()
+			&& cSolverAsync<tSolverType>::iter_ % cSolverAsync<tSolverType>::param_.snapshot() == 0
 			&& caffe::Caffe::root_solver()) ||
 			(request == caffe::SolverAction::SNAPSHOT)) {
-			Snapshot();
+			cSolverAsync<tSolverType>::Snapshot();
 		}
 		if (caffe::SolverAction::STOP == request) {
-			requested_early_exit_ = true;
+			cSolverAsync<tSolverType>::requested_early_exit_ = true;
 			// Break out of training loop.
 			break;
 		}
