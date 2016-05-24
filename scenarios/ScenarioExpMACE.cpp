@@ -10,7 +10,7 @@ cScenarioExpMACE::~cScenarioExpMACE()
 
 std::string cScenarioExpMACE::GetName() const
 {
-	return "Exploration ACE";
+	return "Exploration MACE";
 }
 
 void cScenarioExpMACE::RecordFlagsBeg(tExpTuple& out_tuple) const

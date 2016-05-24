@@ -14,7 +14,7 @@ cScenarioTrainMACE::~cScenarioTrainMACE()
 
 std::string cScenarioTrainMACE::GetName() const
 {
-	return "Train ACE";
+	return "Train MACE";
 }
 
 void cScenarioTrainMACE::BuildTrainer(std::shared_ptr<cTrainerInterface>& out_trainer)
