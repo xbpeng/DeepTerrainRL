@@ -42,8 +42,6 @@ This section covers some of the steps to setup and compile the code. The softwar
  7. Eigen (http://eigen.tuxfamily.org/index.php?title=Main_Page)  
  8. bits  
 	sudo apt-get install gcc-4.9-multilib g++-4.9-multilib 
-11. LodePNG  
- 	https://github.com/lvandeve/lodepng
 
 
 ### Windows
