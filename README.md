@@ -1,13 +1,15 @@
-## Intro
+# Intro
 
 Source code for the paper: Terrain-Adaptive Locomotion Skills using Deep Reinforcement Learning
 https://www.cs.ubc.ca/~van/papers/2016-TOG-deepRL/index.html
 
-## Setup
+# Setup
 
 This section covers some of the steps to setup and compile the code. The software depends on many libraries that need to be carefully prepared and placed for the building and linking to work properly.
 
-### Linux
+## Linux 
+
+### Dependencies
 
  1. Caffe (http://caffe.berkeleyvision.org/installation.html)  
 	Specific version (https://github.com/niuzhiheng/caffe.git @ 7b3e6f2341fe7374243ee0126f5cad1fa1e44e14)
@@ -43,6 +45,20 @@ This section covers some of the steps to setup and compile the code. The softwar
  8. bits  
 	sudo apt-get install gcc-4.9-multilib g++-4.9-multilib 
 
+### Linux Build Instructions
+
+ 1. Download the most recent compressed external file from the newest release.
+ 1. Extract it and move into the DeepTerrainRL directory.
+ 1. Rebuild caffe
+  1. Cd into external/caffe
+  1. Make clean
+  1. Make
+ 1. Cd back to ../../
+ 1. Copy the caffe libraries from external/caffe/build/lib to ./lib
+ 1. Premake4 clean
+ 1. Premake4 gmake
+ 1. Make config=debug64
+ 1. Everything should build fine.
 
 ### Windows
 
