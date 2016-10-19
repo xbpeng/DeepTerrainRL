@@ -59,8 +59,19 @@ This section covers some of the steps to setup and compile the code. The softwar
  1. Premake4 gmake
  1. Make config=debug64
  1. Everything should build fine.
+ 
+ Note: There are some issues with the installation on Ubuntu 16.04. Some of the libraries have changed their location and name (see https://github.com/BVLC/caffe/issues/2347 for a solution).
 
 ### Windows
+
+This setup has been tested on Windows 7 and 10 with visual studio 2013.
+
+  1. Download the library.zip file that contains almost all of the relevant pre compiled external libraries and source code.
+  2. Unpack this library in the same directory the project is located in. For example, TerrainRL/../.
+  3. You might need to install opengl/glu/GL headers. We have been using freeglut for this project. glew might already be included in library.zip.
+  4. You will need to copy some dll files from dynamic_lib.zip to the directory the project is compiled to. For example, optimizer/x64/Debug/. These files are needed by the framework during runtime.
+  5. Might need to create a folder in TerrainRL called "output", This is where temprary and current policies will be dumped.
+
 
 ## Runing The System
 
