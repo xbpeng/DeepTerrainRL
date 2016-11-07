@@ -104,7 +104,9 @@ project "TerrainRL"
 	}
 	excludes 
 	{
-		"learning/DMACETrainer - Copy.cpp"
+		"learning/DMACETrainer - Copy.cpp",
+		"scenarios/ScenarioExpImitate - Copy.cpp",
+		"**- Copy**.cpp",
 	}	
 	includedirs { 
 		"./",
@@ -158,6 +160,7 @@ project "TerrainRL"
 			"/usr/local/cuda/include/",
 			linuxLibraryLoc .. "OpenCV/include",
 			linuxLibraryLoc .. "caffe/src/",
+			"/usr/include/hdf5/serial/",
 		}
 		defines {
 			"_LINUX_",
@@ -178,6 +181,8 @@ project "TerrainRL"
 				"glog",
 				"hdf5",
 				"hdf5_hl",
+				-- "hdf5_serial_hl",
+				-- "hdf5_serial",
 				"glut",
 				"GLEW",
 			}
@@ -199,6 +204,8 @@ project "TerrainRL"
 				"glog",
 				"hdf5",
 				"hdf5_hl",
+				-- "hdf5_serial_hl",
+				-- "hdf5_serial",
 				"glut",
 				"GLEW",
 			}
@@ -283,3 +290,4 @@ project "TerrainRL"
 		}
 
 include "optimizer/"
+
