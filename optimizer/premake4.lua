@@ -1,3 +1,4 @@
+
 --
 -- premake4 file to build TerrainRL_Optimizer
 -- Copyright (c) 2009-2015 Glen Berseth
@@ -34,7 +35,12 @@ project "TerrainRL_Optimizer"
 	excludes {
 		"../scenarios/Draw*.h",
 		"../scenarios/Draw*.cpp",
-		"../sim/CharTracer.cpp"
+		"../sim/CharTracer.cpp",
+		"../learning/DMACETrainer - Copy.cpp",
+		"../scenarios/ScenarioExpImitate - Copy.cpp",
+		"**- Copy**.cpp",
+		"../learning/CaclaTrainer - Copy \(2\).cpp",
+		"../learning/CaclaTrainer - Copy.cpp",
 	}
 
 	includedirs { 
@@ -62,7 +68,7 @@ project "TerrainRL_Optimizer"
 			"-Wl,-rpath," .. path.getabsolute("lib") ,
 		}
 		libdirs { 
-			"lib",
+			-- "lib",
 			linuxLibraryLoc .. "Bullet/bin",
 			linuxLibraryLoc .. "jsoncpp/build/debug/src/lib_json",
 			linuxLibraryLoc .. "caffe/build/lib",
@@ -83,12 +89,13 @@ project "TerrainRL_Optimizer"
 			linuxLibraryLoc .. "OpenCV/include",
 			linuxLibraryLoc .. "caffe/src/",
 			linuxLibraryLoc .. "CMA-ESpp/cma-es",
+			"/usr/include/hdf5/serial/",
 		}
 		defines {
 			"_LINUX_",
 		}
 
-		configuration "Debug*"
+		configuration { "linux", "Debug*", "gmake"}
 			defines { 
 				"_DEBUG",
 				"ENABLE_DEBUG_PRINT",
@@ -106,13 +113,15 @@ project "TerrainRL_Optimizer"
 				"boost_system",
 				"caffe",
 				"glog",
-				"hdf5",
-				"hdf5_hl",
+				--"hdf5",
+				--"hdf5_hl",
+				"hdf5_serial_hl",
+				"hdf5_serial",
 				"f2c",
 			}
 	 
 	 	-- release configs
-		configuration "Release*"
+		configuration { "linux", "Release*", "gmake"}
 			defines { "NDEBUG" }
 			links {
 				"X11",
@@ -126,8 +135,10 @@ project "TerrainRL_Optimizer"
 				"boost_system",
 				"caffe",
 				"glog",
-				"hdf5",
-				"hdf5_hl",
+				--"hdf5",
+				--"hdf5_hl",
+				"hdf5_serial_hl",
+				"hdf5_serial",
 				"f2c",
 			}
 
@@ -208,5 +219,6 @@ project "TerrainRL_Optimizer"
 			"dl",
 			"pthread"
 		}
+
 
 
