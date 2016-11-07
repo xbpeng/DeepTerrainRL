@@ -9,69 +9,52 @@ This section covers some of the steps to setup and compile the code. The softwar
 
 ## Linux 
 
-### Dependencies
+### Linux Build Instructions
 
- 1. Caffe (http://caffe.berkeleyvision.org/installation.html)  
-	Specific version (https://github.com/niuzhiheng/caffe.git @ 7b3e6f2341fe7374243ee0126f5cad1fa1e44e14)
+ 1. Download the most recent compressed external file from the newest release.
+    `wget https://github.com/xbpeng/DeepTerrainRL/releases/download/v1.0/TerrainRL-external-Linux.tar.gz`
+ 1. Extract it and move into the DeepTerrainRL directory.     
+    `tar zxvf TerrainRL-external-Linux.tar.gz`
+ 1. repair external
+    ```
+    cp ~/DeepTerrainRL/caffe_mods/caffe.proto ~/DeepTerrainRL/external/caffe/src/caffe/proto/caffe.proto 
+    cp ~/DeepTerrainRL/caffe_mods/memory_data_layer.cpp ~/DeepTerrainRL/external/caffe/src/caffe/layers/memory_data_layer.cpp
+    cp ~/DeepTerrainRL/caffe_mods/memory_data_layer.hpp ~/DeepTerrainRL/external/caffe/include/caffe/layers/memory_data_layer.hpp 
+    ```
+ 1. install depends
+    ```
 	sudo apt-get install libprotobuf-dev libleveldb-dev libsnappy-dev libopencv-dev libhdf5-serial-dev protobuf-compiler  
 	sudo apt-get install --no-install-recommends libboost-all-dev  
 	sudo apt-get install libgflags-dev libgoogle-glog-dev liblmdb-dev  
 	sudo apt-get install libatlas-base-dev  
+    sudo apt-get install f2c libglew-dev
+    ```
 	
 	In the instruction to make and build Caffe uncomment the CPU only line  
 	```
 	# CPU-only switch (uncomment to build without GPU support).
 	CPU_ONLY := 1
 	```
-
-	Or if on Windows  
-	https://github.com/initialneil/caffe-vs2013
-
- 2. Boost  
- 3. OpenCV  
- 4. BulletPhysics
- 5. CUDA  
-	Package Manager Installation  
-	Install repository meta-data  
-	When using a proxy server with aptitude, ensure that wget is set up to use the	same proxy settings before installing the cuda-repo package.  
-	$ sudo dpkg -i cuda-repo-<distro>_<version>_<architecture>.deb  
-	Update the Apt repository cache  
-	$ sudo apt-get update  
-	Install CUDA  
-	$ sudo apt-get install cuda  
- 	
- 6. Json_cpp (https://github.com/open-source-parsers/jsoncpp)  
- 7. Eigen (http://eigen.tuxfamily.org/index.php?title=Main_Page)  
- 8. bits  
+    
+    ```
 	sudo apt-get install gcc-4.9-multilib g++-4.9-multilib 
-
-### Linux Build Instructions
-
- 1. Download the most recent compressed external file from the newest release.
- 1. Extract it and move into the DeepTerrainRL directory.
+    ```
  1. Rebuild caffe
   1. Cd into external/caffe
   1. Make clean
   1. Make
  1. Cd back to ../../
+    cd ../..
  1. Copy the caffe libraries from external/caffe/build/lib to ./lib
+    cp external/caffe/build/lib/*.* lib/
  1. Premake4 clean
+    premake4 clean
  1. Premake4 gmake
+    premake4 gmake
  1. Make config=debug64
- 1. Everything should build fine.
+    make config=debug64
  
  Note: There are some issues with the installation on Ubuntu 16.04. Some of the libraries have changed their location and name (see https://github.com/BVLC/caffe/issues/2347 for a solution).
-
-### Windows
-
-This setup has been tested on Windows 7 and 10 with visual studio 2013.
-
-  1. Download the library.zip file that contains almost all of the relevant pre compiled external libraries and source code.
-  2. Unpack this library in the same directory the project is located in. For example, TerrainRL/../.
-  3. You might need to install opengl/glu/GL headers. We have been using freeglut for this project. glew might already be included in library.zip.
-  4. You will need to copy some dll files from dynamic_lib.zip to the directory the project is compiled to. For example, optimizer/x64/Debug/. These files are needed by the framework during runtime.
-  5. Might need to create a folder in TerrainRL called "output", This is where temprary and current policies will be dumped.
-
 
 ## Runing The System
 
