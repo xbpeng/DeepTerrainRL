@@ -12,26 +12,33 @@ This section covers some of the steps to setup and compile the code. The softwar
 ### Linux Build Instructions
 
  1. Download the most recent compressed external file from the newest release.
-    wget https://github.com/xbpeng/DeepTerrainRL/releases/download/v1.0/TerrainRL-external-Linux.tar.gz
+    `wget https://github.com/xbpeng/DeepTerrainRL/releases/download/v1.0/TerrainRL-external-Linux.tar.gz`
  1. Extract it and move into the DeepTerrainRL directory.     
-    tar zxvf TerrainRL-external-Linux.tar.gz
+    `tar zxvf TerrainRL-external-Linux.tar.gz`
  1. repair external
+    ```
     cp ~/DeepTerrainRL/caffe_mods/caffe.proto ~/DeepTerrainRL/external/caffe/src/caffe/proto/caffe.proto 
     cp ~/DeepTerrainRL/caffe_mods/memory_data_layer.cpp ~/DeepTerrainRL/external/caffe/src/caffe/layers/memory_data_layer.cpp
     cp ~/DeepTerrainRL/caffe_mods/memory_data_layer.hpp ~/DeepTerrainRL/external/caffe/include/caffe/layers/memory_data_layer.hpp 
+    ```
  1. install depends
+    ```
 	sudo apt-get install libprotobuf-dev libleveldb-dev libsnappy-dev libopencv-dev libhdf5-serial-dev protobuf-compiler  
 	sudo apt-get install --no-install-recommends libboost-all-dev  
 	sudo apt-get install libgflags-dev libgoogle-glog-dev liblmdb-dev  
 	sudo apt-get install libatlas-base-dev  
     sudo apt-get install f2c libglew-dev
+    ```
 	
 	In the instruction to make and build Caffe uncomment the CPU only line  
 	```
 	# CPU-only switch (uncomment to build without GPU support).
 	CPU_ONLY := 1
 	```
+    
+    ```
 	sudo apt-get install gcc-4.9-multilib g++-4.9-multilib 
+    ```
  1. Rebuild caffe
   1. Cd into external/caffe
   1. Make clean
