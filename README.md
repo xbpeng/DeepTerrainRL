@@ -7,7 +7,9 @@ https://www.cs.ubc.ca/~van/papers/2016-TOG-deepRL/index.html
 
 This section covers some of the steps to setup and compile the code. The software depends on many libraries that need to be carefully prepared and placed for the building and linking to work properly.
 
-## Linux 
+# Installation
+
+## Linux
 
 ### Dependencies
 
@@ -62,7 +64,7 @@ This section covers some of the steps to setup and compile the code. The softwar
  
  Note: There are some issues with the installation on Ubuntu 16.04. Some of the libraries have changed their location and name (see https://github.com/BVLC/caffe/issues/2347 for a solution).
 
-### Windows
+## Windows
 
 This setup has been tested on Windows 7 and 10 with visual studio 2013.
 
